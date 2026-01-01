@@ -1,6 +1,6 @@
 // 在main.js中调用此模块以生成像素
 // const rolePixelGenerator = require('role.pixelGenerator');
-// 在.loop中使用rolePixelGenerator.run();
+// rolePixelGenerator.run();
 
 const rolePixelGenerator = {
     run: function() {
@@ -26,3 +26,4 @@ const rolePixelGenerator = {
 
 
 module.exports = rolePixelGenerator;
+
