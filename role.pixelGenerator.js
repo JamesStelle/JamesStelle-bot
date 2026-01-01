@@ -1,3 +1,7 @@
+// 在main.js中调用此模块以生成像素
+// const rolePixelGenerator = require('role.pixelGenerator');
+// 在.loop中使用rolePixelGenerator.run();
+
 const rolePixelGenerator = {
     run: function() {
         // 生成像素所需的 CPU 成本
@@ -19,5 +23,6 @@ const rolePixelGenerator = {
         }
     }
 };
+
 
 module.exports = rolePixelGenerator;
