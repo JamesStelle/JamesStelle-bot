@@ -4,6 +4,9 @@ var runRoom = require('runRoom');
 var Tower = require('Tower');
 var Link = require('Link');
 var terminalManager = require('Terminal');
+const pixelGenerator = require('pixelGenerator');
+
+
 module.exports.loop = function () {
 
     runCreep.run();
@@ -12,5 +15,5 @@ module.exports.loop = function () {
     Tower.run();
     Link.run();
     terminalManager.run();
+    pixelGenerator.generatePixel();
 }
-
