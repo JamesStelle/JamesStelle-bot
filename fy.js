@@ -1,4 +1,4 @@
-
+//<script type="text/javascript" src="file:///F:/SteamLibrary/steamapps/common/Screeps/fy.js" async defer></script>
 // ==UserScript==
 // @name         screeps-chinese-pack
 // @namespace    http://tampermonkey.net/
