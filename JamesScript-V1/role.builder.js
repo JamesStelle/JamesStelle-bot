@@ -21,6 +21,36 @@ var roleBuilder = {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }
+            // If no construction sites, look for structures to repair
+            // 中文: 如果没有建造任务，寻找需要修理的建筑
+            else {
+                var repairTargets = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return structure.hits < structure.hitsMax;
+                    }
+                });
+                
+                if(repairTargets.length > 0) {
+                    creep.say('🔧 repair');
+                    // Find the structure with lowest hit percentage
+                    // 中文: 寻找血量百分比最低的建筑
+                    var target = repairTargets.reduce((min, structure) => {
+                        return (structure.hits / structure.hitsMax) < (min.hits / min.hitsMax) ? structure : min;
+                    });
+                    
+                    if(creep.repair(target) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(target, {visualizePathStyle: {stroke: '#00ff00'}});
+                    }
+                }
+                // If nothing to repair, upgrade controller as fallback
+                // 中文: 如果没有修理任务，作为备选升级控制器
+                else {
+                    creep.say('⚡ upgrade');
+                    if(creep.upgradeController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(creep.room.controller, {visualizePathStyle: {stroke: '#ffffff'}});
+                    }
+                }
+            }
 	    }
 		// If not building, harvest energy
 		// 中文: 如果不在建造，采集能量
